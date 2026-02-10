@@ -56,9 +56,15 @@ def get_target_calendar_id(service):
 
 def cmd_list(service, args):
     """List 10 upcoming events."""
-    target_id = get_target_calendar_id(service)
+    target_id = None
+    if len(args) > 0 and '@' in args[0]:
+        target_id = args[0]
+    else:
+        target_id = get_target_calendar_id(service)
+
     if not target_id:
-        print("ERROR: No shared user calendar found. Did you share your calendar with the Service Account?")
+        print("ERROR: No shared user calendar found automatically.")
+        print("Try providing your email explicitly: python calendar_tool.py list tu_email@gmail.com")
         return
 
     now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
