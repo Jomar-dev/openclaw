@@ -1,0 +1,11 @@
+model_list:
+  - model_name: gemini-flash  # Nombre coherente con documentación
+    litellm_params:
+      model: groq/llama-3.3-70b-versatile
+      api_key: os.environ/GROQ_API_KEY
+      drop_params: true
+  - model_name: gemini-flash-backup
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      drop_params: true
